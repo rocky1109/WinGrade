@@ -14,7 +14,7 @@ router.register(r'vdis', VDIViewSet)
 accounts_router = routers.NestedSimpleRouter(
     router, r'accounts', lookup='account'
 )
-accounts_router.register(r'posts', AccountVDIsViewSet)
+accounts_router.register(r'vdis', AccountVDIsViewSet)
 
 
 urlpatterns = [
