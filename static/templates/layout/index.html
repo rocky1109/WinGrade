@@ -1,0 +1,8 @@
+
+<vdis vdis="vm.vdis" ng-show="vm.vdis && vm.vdis.length"></vdis>
+
+<a class="btn btn-primary btn-fab btn-raised mdi-content-add btn-add-new-post"
+   href="javascript:void(0)"
+   ng-show="vm.isAuthenticated"
+   ng-dialog="/static/templates/vdis/new-vdi.html"
+   ng-dialog-controller="NewVDIController as vm"></a>

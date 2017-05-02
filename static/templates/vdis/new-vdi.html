@@ -1,0 +1,29 @@
+<form role="form" ng-submit="vm.submit()">
+  <label>New Connection Server</label>
+
+  <div class="form-group">
+    <label for="vdi__address">Address</label>
+    <input type="text" class="form-control" id="vdi__address" ng-model="vm.address" placeholder="ex. 10.108.x.x" />
+  </div>
+
+  <div class="form-group">
+    <label for="vdi__user">User name</label>
+    <input type="text" class="form-control" id="vdi__user" ng-model="vm.user" placeholder="ex. administrator" />
+  </div>
+
+  <div class="form-group">
+    <label for="vdi__password">Password</label>
+    <input type="password" class="form-control" id="vdi__password" ng-model="vm.password" placeholder="ex. ca$hc0w" />
+  </div>
+
+  <div class="form-group">
+    <label for="vdi__domain">Domain</label>
+    <input type="text" class="form-control" id="vdi__domain" ng-model="vm.domain" placeholder="ex. mydomain" />
+  </div>
+
+  <div class="form-group">
+    <button type="submit" class="btn btn-primary">
+      Submit
+    </button>
+  </div>
+</form>
