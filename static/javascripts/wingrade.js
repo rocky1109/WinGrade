@@ -10,7 +10,8 @@
       'wingrade.authentication',
       'wingrade.layout',
       'wingrade.utils',
-      'wingrade.vdis'
+      'wingrade.vdis',
+      'wingrade.vcenters'
     ]);
 
   angular

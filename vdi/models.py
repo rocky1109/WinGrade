@@ -14,4 +14,4 @@ class VDI(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
 
     def __unicode__(self):
-        return '{0}'.format(self.content)
+        return '[{0}]{1}'.format(self.id, self.address)

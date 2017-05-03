@@ -16,6 +16,14 @@
       controller: 'IndexController', 
       controllerAs: 'vm',
       templateUrl: '/static/templates/layout/index.html'
+    }).when('/vcenters', {
+      controller: 'VDIHomeController',
+      controllerAs: 'vm',
+      templateUrl: '/static/templates/layout/vdi-home.html'
+    }).when('/vcenters/:id', {
+      controller: 'EditVCenterController',
+      controllerAs: 'vm',
+      templateUrl: '/static/templates/vcenters/edit-vcenter.html'
     }).when('/register', {
       controller: 'RegisterController', 
       controllerAs: 'vm',
@@ -32,6 +40,6 @@
       controller: 'AccountSettingsController',
       controllerAs: 'vm',
       templateUrl: '/static/templates/accounts/settings.html'
-    }).otherwise('/');
+    }).otherwise('/login');
   }
 })();

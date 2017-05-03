@@ -1,0 +1,24 @@
+<div class="row">
+  <div class="col-sm-12">
+    <div class="well">
+      <div class="post">
+        <div class="post__content">
+          <a ng-href="/vcenters/{{ vcenter.id }}">
+            <span class="glyphicon glyphicon-pencil"></span>
+          </a>
+        </div>
+
+        <div class="post__meta">
+          <a ng-href="/vcenters" ng-diabled="{{ vcenter.password }}">
+          {{ vcenter.address }}
+          </a>
+        </div>
+
+        <div class="post__content">
+          {{ vcenter.user }}
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>

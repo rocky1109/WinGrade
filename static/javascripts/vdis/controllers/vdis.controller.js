@@ -73,6 +73,7 @@
        */
       function columnMapFn(column) {
         var lengths = column.map(function (element) {
+          console.log(element.address.length);
           return element.address.length;
         });
 
