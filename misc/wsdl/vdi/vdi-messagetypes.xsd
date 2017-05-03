@@ -1,0 +1,1775 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--
+   Copyright 2005-2016 VMware, Inc.  All rights reserved.
+-->
+<schema
+   targetNamespace="urn:vdi"
+   xmlns="http://www.w3.org/2001/XMLSchema"
+   xmlns:vdi="urn:vdi"
+   xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+   xmlns:vim25="urn:vim25"
+   elementFormDefault="qualified"
+>
+   <import namespace="urn:vim25" schemaLocation="core-types.xsd" />
+   <include schemaLocation="vdi-types.xsd" />
+   <complexType name="AuthenticationManager_LoginRequestType">
+      <sequence>
+         <element name="_this" type="vim25:ManagedObjectReference" />
+         <element name="username" type="xsd:string" />
+         <element name="password" type="vdi:SecureString" />
+         <element name="domain" type="xsd:string" />
+      </sequence>
+   </complexType>
+   <complexType name="AuthenticationManager_LogoutRequestType">
+      <sequence>
+         <element name="_this" type="vim25:ManagedObjectReference" />
+      </sequence>
+   </complexType>
+   <complexType name="GlobalApplicationEntitlement_CreateRequestType">
+      <sequence>
+         <element name="_this" type="vim25:ManagedObjectReference" />
+         <element name="base" type="vdi:GlobalApplicationEntitlementBase" />
+      </sequence>
+   </complexType>
+   <complexType name="GlobalApplicationEntitlement_GetRequestType">
+      <sequence>
+         <element name="_this" type="vim25:ManagedObjectReference" />
+         <element name="id" type="vdi:GlobalApplicationEntitlementId" />
+      </sequence>
+   </complexType>
+   <complexType name="GlobalApplicationEntitlement_UpdateRequestType">
+      <sequence>
+         <element name="_this" type="vim25:ManagedObjectReference" />
+         <element name="id" type="vdi:GlobalApplicationEntitlementId" />
+         <element name="updates" type="vdi:MapEntry" maxOccurs="unbounded" />
+      </sequence>
+   </complexType>
+   <complexType name="GlobalApplicationEntitlement_DeleteRequestType">
+      <sequence>
+         <element name="_this" type="vim25:ManagedObjectReference" />
+         <element name="id" type="vdi:GlobalApplicationEntitlementId" />
+      </sequence>
+   </complexType>
+   <complexType name="GlobalEntitlement_CreateRequestType">
+      <sequence>
+         <element name="_this" type="vim25:ManagedObjectReference" />
+         <element name="base" type="vdi:GlobalEntitlementBase" />
+      </sequence>
+   </complexType>
+   <complexType name="GlobalEntitlement_GetRequestType">
+      <sequence>
+         <element name="_this" type="vim25:ManagedObjectReference" />
+         <element name="id" type="vdi:GlobalEntitlementId" />
+      </sequence>
+   </complexType>
+   <complexType name="GlobalEntitlement_GetSummaryViewRequestType">
+      <sequence>
+         <element name="_this" type="vim25:ManagedObjectReference" />
+         <element name="id" type="vdi:GlobalEntitlementId" />
+      </sequence>
+   </complexType>
+   <complexType name="GlobalEntitlement_GetSummaryViewsRequestType">
+      <sequence>
+         <element name="_this" type="vim25:ManagedObjectReference" />
+         <element name="ids" type="vdi:GlobalEntitlementId" maxOccurs="unbounded" />
+      </sequence>
+   </complexType>
+   <complexType name="GlobalEntitlement_UpdateRequestType">
+      <sequence>
+         <element name="_this" type="vim25:ManagedObjectReference" />
+         <element name="id" type="vdi:GlobalEntitlementId" />
+         <element name="updates" type="vdi:MapEntry" maxOccurs="unbounded" />
+      </sequence>
+   </complexType>
+   <complexType name="GlobalEntitlement_DeleteRequestType">
+      <sequence>
+         <element name="_this" type="vim25:ManagedObjectReference" />
+         <element name="id" type="vdi:GlobalEntitlementId" />
+      </sequence>
+   </complexType>
+   <complexType name="Pod_GetRequestType">
+      <sequence>
+         <element name="_this" type="vim25:ManagedObjectReference" />
+         <element name="id" type="vdi:PodId" />
+      </sequence>
+   </complexType>
+   <complexType name="Pod_ListRequestType">
+      <sequence>
+         <element name="_this" type="vim25:ManagedObjectReference" />
+      </sequence>
+   </complexType>
+   <complexType name="Pod_UpdateRequestType">
+      <sequence>
+         <element name="_this" type="vim25:ManagedObjectReference" />
+         <element name="id" type="vdi:PodId" />
+         <element name="updates" type="vdi:MapEntry" maxOccurs="unbounded" />
+      </sequence>
+   </complexType>
+   <complexType name="PodAssignment_GetRequestType">
+      <sequence>
+         <element name="_this" type="vim25:ManagedObjectReference" />
+         <element name="id" type="vdi:PodAssignmentId" />
+      </sequence>
+   </complexType>
+   <complexType name="PodAssignment_GetInfosRequestType">
+      <sequence>
+         <element name="_this" type="vim25:ManagedObjectReference" />
+         <element name="ids" type="vdi:PodAssignmentId" maxOccurs="unbounded" />
+      </sequence>
+   </complexType>
+   <complexType name="PodEndpoint_GetRequestType">
+      <sequence>
+         <element name="_this" type="vim25:ManagedObjectReference" />
+         <element name="id" type="vdi:PodEndpointId" />
+      </sequence>
+   </complexType>
+   <complexType name="PodEndpoint_ListRequestType">
+      <sequence>
+         <element name="_this" type="vim25:ManagedObjectReference" />
+         <element name="pod" type="vdi:PodId" />
+      </sequence>
+   </complexType>
+   <complexType name="PodFederation_InitializeRequestType">
+      <sequence>
+         <element name="_this" type="vim25:ManagedObjectReference" />
+      </sequence>
+   </complexType>
+   <complexType name="PodFederation_UninitializeRequestType">
+      <sequence>
+         <element name="_this" type="vim25:ManagedObjectReference" />
+      </sequence>
+   </complexType>
+   <complexType name="PodFederation_GetRequestType">
+      <sequence>
+         <element name="_this" type="vim25:ManagedObjectReference" />
+      </sequence>
+   </complexType>
+   <complexType name="PodFederation_UpdateRequestType">
+      <sequence>
+         <element name="_this" type="vim25:ManagedObjectReference" />
+         <element name="updates" type="vdi:MapEntry" maxOccurs="unbounded" />
+      </sequence>
+   </complexType>
+   <complexType name="PodFederation_JoinRequestType">
+      <sequence>
+         <element name="_this" type="vim25:ManagedObjectReference" />
+         <element name="remotePodAddress" type="xsd:string" />
+         <element name="userName" type="xsd:string" minOccurs="0" />
+         <element name="password" type="vdi:SecureString" minOccurs="0" />
+      </sequence>
+   </complexType>
+   <complexType name="PodFederation_UnjoinRequestType">
+      <sequence>
+         <element name="_this" type="vim25:ManagedObjectReference" />
+      </sequence>
+   </complexType>
+   <complexType name="PodFederation_EjectRequestType">
+      <sequence>
+         <element name="_this" type="vim25:ManagedObjectReference" />
+         <element name="pod" type="vdi:PodId" />
+      </sequence>
+   </complexType>
+   <complexType name="Site_CreateRequestType">
+      <sequence>
+         <element name="_this" type="vim25:ManagedObjectReference" />
+         <element name="base" type="vdi:SiteBase" />
+      </sequence>
+   </complexType>
+   <complexType name="Site_GetRequestType">
+      <sequence>
+         <element name="_this" type="vim25:ManagedObjectReference" />
+         <element name="id" type="vdi:SiteId" />
+      </sequence>
+   </complexType>
+   <complexType name="Site_ListRequestType">
+      <sequence>
+         <element name="_this" type="vim25:ManagedObjectReference" />
+      </sequence>
+   </complexType>
+   <complexType name="Site_UpdateRequestType">
+      <sequence>
+         <element name="_this" type="vim25:ManagedObjectReference" />
+         <element name="id" type="vdi:SiteId" />
+         <element name="updates" type="vdi:MapEntry" maxOccurs="unbounded" />
+      </sequence>
+   </complexType>
+   <complexType name="Site_DeleteRequestType">
+      <sequence>
+         <element name="_this" type="vim25:ManagedObjectReference" />
+         <element name="id" type="vdi:SiteId" />
+      </sequence>
+   </complexType>
+   <complexType name="UserHomeSite_CreateRequestType">
+      <sequence>
+         <element name="_this" type="vim25:ManagedObjectReference" />
+         <element name="base" type="vdi:UserHomeSiteBase" />
+      </sequence>
+   </complexType>
+   <complexType name="UserHomeSite_GetRequestType">
+      <sequence>
+         <element name="_this" type="vim25:ManagedObjectReference" />
+         <element name="id" type="vdi:UserHomeSiteId" />
+      </sequence>
+   </complexType>
+   <complexType name="UserHomeSite_GetInfosRequestType">
+      <sequence>
+         <element name="_this" type="vim25:ManagedObjectReference" />
+         <element name="ids" type="vdi:UserHomeSiteId" maxOccurs="unbounded" />
+      </sequence>
+   </complexType>
+   <complexType name="UserHomeSite_ListRequestType">
+      <sequence>
+         <element name="_this" type="vim25:ManagedObjectReference" />
+         <element name="userOrGroup" type="vdi:UserOrGroupId" />
+      </sequence>
+   </complexType>
+   <complexType name="UserHomeSite_DeleteRequestType">
+      <sequence>
+         <element name="_this" type="vim25:ManagedObjectReference" />
+         <element name="id" type="vdi:UserHomeSiteId" />
+      </sequence>
+   </complexType>
+   <complexType name="UserHomeSite_ResolveRequestType">
+      <sequence>
+         <element name="_this" type="vim25:ManagedObjectReference" />
+         <element name="user" type="vdi:UserOrGroupId" />
+         <element name="globalEntitlement" type="vdi:GlobalEntitlementId" />
+      </sequence>
+   </complexType>
+   <complexType name="UserHomeSite_ResolveForGAERequestType">
+      <sequence>
+         <element name="_this" type="vim25:ManagedObjectReference" />
+         <element name="user" type="vdi:UserOrGroupId" />
+         <element name="globalApplicationEntitlement" type="vdi:GlobalApplicationEntitlementId" />
+      </sequence>
+   </complexType>
+   <complexType name="ADDomainHealth_ListRequestType">
+      <sequence>
+         <element name="_this" type="vim25:ManagedObjectReference" />
+      </sequence>
+   </complexType>
+   <complexType name="CertificateSSOConnectorHealth_GetRequestType">
+      <sequence>
+         <element name="_this" type="vim25:ManagedObjectReference" />
+         <element name="id" type="vdi:CertificateSSOConnectorId" />
+      </sequence>
+   </complexType>
+   <complexType name="CertificateSSOConnectorHealth_ListRequestType">
+      <sequence>
+         <element name="_this" type="vim25:ManagedObjectReference" />
+      </sequence>
+   </complexType>
+   <complexType name="ConnectionServerHealth_GetRequestType">
+      <sequence>
+         <element name="_this" type="vim25:ManagedObjectReference" />
+         <element name="id" type="vdi:ConnectionServerId" />
+      </sequence>
+   </complexType>
+   <complexType name="ConnectionServerHealth_ListRequestType">
+      <sequence>
+         <element name="_this" type="vim25:ManagedObjectReference" />
+      </sequence>
+   </complexType>
+   <complexType name="EventDatabaseHealth_GetRequestType">
+      <sequence>
+         <element name="_this" type="vim25:ManagedObjectReference" />
+      </sequence>
+   </complexType>
+   <complexType name="FarmHealth_GetRequestType">
+      <sequence>
+         <element name="_this" type="vim25:ManagedObjectReference" />
+         <element name="id" type="vdi:FarmId" />
+      </sequence>
+   </complexType>
+   <complexType name="PodHealth_GetRequestType">
+      <sequence>
+         <element name="_this" type="vim25:ManagedObjectReference" />
+         <element name="id" type="vdi:PodId" />
+      </sequence>
+   </complexType>
+   <complexType name="PodHealth_ListRequestType">
+      <sequence>
+         <element name="_this" type="vim25:ManagedObjectReference" />
+      </sequence>
+   </complexType>
+   <complexType name="SAMLAuthenticatorHealth_GetRequestType">
+      <sequence>
+         <element name="_this" type="vim25:ManagedObjectReference" />
+         <element name="id" type="vdi:SAMLAuthenticatorId" />
+      </sequence>
+   </complexType>
+   <complexType name="SAMLAuthenticatorHealth_ListRequestType">
+      <sequence>
+         <element name="_this" type="vim25:ManagedObjectReference" />
+      </sequence>
+   </complexType>
+   <complexType name="SecurityServerHealth_GetRequestType">
+      <sequence>
+         <element name="_this" type="vim25:ManagedObjectReference" />
+         <element name="id" type="vdi:SecurityServerId" />
+      </sequence>
+   </complexType>
+   <complexType name="SecurityServerHealth_ListRequestType">
+      <sequence>
+         <element name="_this" type="vim25:ManagedObjectReference" />
+      </sequence>
+   </complexType>
+   <complexType name="ViewComposerHealth_GetRequestType">
+      <sequence>
+         <element name="_this" type="vim25:ManagedObjectReference" />
+         <element name="id" type="vdi:VirtualCenterId" />
+      </sequence>
+   </complexType>
+   <complexType name="ViewComposerHealth_ListRequestType">
+      <sequence>
+         <element name="_this" type="vim25:ManagedObjectReference" />
+      </sequence>
+   </complexType>
+   <complexType name="VirtualCenterHealth_GetRequestType">
+      <sequence>
+         <element name="_this" type="vim25:ManagedObjectReference" />
+         <element name="id" type="vdi:VirtualCenterId" />
+      </sequence>
+   </complexType>
+   <complexType name="VirtualCenterHealth_ListRequestType">
+      <sequence>
+         <element name="_this" type="vim25:ManagedObjectReference" />
+      </sequence>
+   </complexType>
+   <complexType name="CEIP_GetRequestType">
+      <sequence>
+         <element name="_this" type="vim25:ManagedObjectReference" />
+      </sequence>
+   </complexType>
+   <complexType name="CEIP_UpdateRequestType">
+      <sequence>
+         <element name="_this" type="vim25:ManagedObjectReference" />
+         <element name="updates" type="vdi:MapEntry" maxOccurs="unbounded" />
+      </sequence>
+   </complexType>
+   <complexType name="CertificateSSOConnector_CreateRequestType">
+      <sequence>
+         <element name="_this" type="vim25:ManagedObjectReference" />
+         <element name="spec" type="vdi:CertificateSSOConnectorSpec" />
+      </sequence>
+   </complexType>
+   <complexType name="CertificateSSOConnector_GetRequestType">
+      <sequence>
+         <element name="_this" type="vim25:ManagedObjectReference" />
+         <element name="id" type="vdi:CertificateSSOConnectorId" />
+      </sequence>
+   </complexType>
+   <complexType name="CertificateSSOConnector_UpdateRequestType">
+      <sequence>
+         <element name="_this" type="vim25:ManagedObjectReference" />
+         <element name="id" type="vdi:CertificateSSOConnectorId" />
+         <element name="updates" type="vdi:MapEntry" maxOccurs="unbounded" />
+      </sequence>
+   </complexType>
+   <complexType name="CertificateSSOConnector_DeleteRequestType">
+      <sequence>
+         <element name="_this" type="vim25:ManagedObjectReference" />
+         <element name="id" type="vdi:CertificateSSOConnectorId" />
+      </sequence>
+   </complexType>
+   <complexType name="CertificateSSOConnector_ListRequestType">
+      <sequence>
+         <element name="_this" type="vim25:ManagedObjectReference" />
+      </sequence>
+   </complexType>
+   <complexType name="CertificateSSOEnrollmentServer_GetRequestType">
+      <sequence>
+         <element name="_this" type="vim25:ManagedObjectReference" />
+         <element name="id" type="vdi:CertificateSSOEnrollmentServerId" />
+      </sequence>
+   </complexType>
+   <complexType name="CertificateSSOEnrollmentServer_ListRequestType">
+      <sequence>
+         <element name="_this" type="vim25:ManagedObjectReference" />
+      </sequence>
+   </complexType>
+   <complexType name="ConnectionServer_GetRequestType">
+      <sequence>
+         <element name="_this" type="vim25:ManagedObjectReference" />
+         <element name="id" type="vdi:ConnectionServerId" />
+      </sequence>
+   </complexType>
+   <complexType name="ConnectionServer_UpdateRequestType">
+      <sequence>
+         <element name="_this" type="vim25:ManagedObjectReference" />
+         <element name="id" type="vdi:ConnectionServerId" />
+         <element name="updates" type="vdi:MapEntry" maxOccurs="unbounded" />
+      </sequence>
+   </complexType>
+   <complexType name="ConnectionServer_ListRequestType">
+      <sequence>
+         <element name="_this" type="vim25:ManagedObjectReference" />
+      </sequence>
+   </complexType>
+   <complexType name="EventDatabase_GetRequestType">
+      <sequence>
+         <element name="_this" type="vim25:ManagedObjectReference" />
+      </sequence>
+   </complexType>
+   <complexType name="EventDatabase_UpdateRequestType">
+      <sequence>
+         <element name="_this" type="vim25:ManagedObjectReference" />
+         <element name="updates" type="vdi:MapEntry" maxOccurs="unbounded" />
+      </sequence>
+   </complexType>
+   <complexType name="EventDatabase_ClearRequestType">
+      <sequence>
+         <element name="_this" type="vim25:ManagedObjectReference" />
+      </sequence>
+   </complexType>
+   <complexType name="GlobalSettings_GetRequestType">
+      <sequence>
+         <element name="_this" type="vim25:ManagedObjectReference" />
+      </sequence>
+   </complexType>
+   <complexType name="GlobalSettings_UpdateRequestType">
+      <sequence>
+         <element name="_this" type="vim25:ManagedObjectReference" />
+         <element name="updates" type="vdi:MapEntry" maxOccurs="unbounded" />
+      </sequence>
+   </complexType>
+   <complexType name="License_GetRequestType">
+      <sequence>
+         <element name="_this" type="vim25:ManagedObjectReference" />
+      </sequence>
+   </complexType>
+   <complexType name="License_SetRequestType">
+      <sequence>
+         <element name="_this" type="vim25:ManagedObjectReference" />
+         <element name="licenseKey" type="xsd:string" />
+      </sequence>
+   </complexType>
+   <complexType name="RADIUSAuthenticator_CreateRequestType">
+      <sequence>
+         <element name="_this" type="vim25:ManagedObjectReference" />
+         <element name="spec" type="vdi:RADIUSAuthenticatorSpec" />
+      </sequence>
+   </complexType>
+   <complexType name="RADIUSAuthenticator_GetRequestType">
+      <sequence>
+         <element name="_this" type="vim25:ManagedObjectReference" />
+         <element name="id" type="vdi:RADIUSAuthenticatorId" />
+      </sequence>
+   </complexType>
+   <complexType name="RADIUSAuthenticator_UpdateRequestType">
+      <sequence>
+         <element name="_this" type="vim25:ManagedObjectReference" />
+         <element name="id" type="vdi:RADIUSAuthenticatorId" />
+         <element name="updates" type="vdi:MapEntry" maxOccurs="unbounded" />
+      </sequence>
+   </complexType>
+   <complexType name="RADIUSAuthenticator_DeleteRequestType">
+      <sequence>
+         <element name="_this" type="vim25:ManagedObjectReference" />
+         <element name="id" type="vdi:RADIUSAuthenticatorId" />
+      </sequence>
+   </complexType>
+   <complexType name="RADIUSAuthenticator_ListRequestType">
+      <sequence>
+         <element name="_this" type="vim25:ManagedObjectReference" />
+      </sequence>
+   </complexType>
+   <complexType name="SAMLAuthenticator_CreateRequestType">
+      <sequence>
+         <element name="_this" type="vim25:ManagedObjectReference" />
+         <element name="spec" type="vdi:SAMLAuthenticatorSpec" />
+      </sequence>
+   </complexType>
+   <complexType name="SAMLAuthenticator_GetRequestType">
+      <sequence>
+         <element name="_this" type="vim25:ManagedObjectReference" />
+         <element name="id" type="vdi:SAMLAuthenticatorId" />
+      </sequence>
+   </complexType>
+   <complexType name="SAMLAuthenticator_UpdateRequestType">
+      <sequence>
+         <element name="_this" type="vim25:ManagedObjectReference" />
+         <element name="id" type="vdi:SAMLAuthenticatorId" />
+         <element name="updates" type="vdi:MapEntry" maxOccurs="unbounded" />
+      </sequence>
+   </complexType>
+   <complexType name="SAMLAuthenticator_DeleteRequestType">
+      <sequence>
+         <element name="_this" type="vim25:ManagedObjectReference" />
+         <element name="id" type="vdi:SAMLAuthenticatorId" />
+      </sequence>
+   </complexType>
+   <complexType name="SAMLAuthenticator_ListRequestType">
+      <sequence>
+         <element name="_this" type="vim25:ManagedObjectReference" />
+      </sequence>
+   </complexType>
+   <complexType name="SecurityServer_GetRequestType">
+      <sequence>
+         <element name="_this" type="vim25:ManagedObjectReference" />
+         <element name="id" type="vdi:SecurityServerId" />
+      </sequence>
+   </complexType>
+   <complexType name="SecurityServer_UpdateRequestType">
+      <sequence>
+         <element name="_this" type="vim25:ManagedObjectReference" />
+         <element name="id" type="vdi:SecurityServerId" />
+         <element name="updates" type="vdi:MapEntry" maxOccurs="unbounded" />
+      </sequence>
+   </complexType>
+   <complexType name="SecurityServer_ListRequestType">
+      <sequence>
+         <element name="_this" type="vim25:ManagedObjectReference" />
+      </sequence>
+   </complexType>
+   <complexType name="Syslog_UpdateRequestType">
+      <sequence>
+         <element name="_this" type="vim25:ManagedObjectReference" />
+         <element name="updates" type="vdi:MapEntry" maxOccurs="unbounded" />
+      </sequence>
+   </complexType>
+   <complexType name="Syslog_GetRequestType">
+      <sequence>
+         <element name="_this" type="vim25:ManagedObjectReference" />
+      </sequence>
+   </complexType>
+   <complexType name="URLRedirection_CreateRequestType">
+      <sequence>
+         <element name="_this" type="vim25:ManagedObjectReference" />
+         <element name="urlRedirectionSpec" type="vdi:URLRedirectionSpec" />
+      </sequence>
+   </complexType>
+   <complexType name="URLRedirection_GetRequestType">
+      <sequence>
+         <element name="_this" type="vim25:ManagedObjectReference" />
+         <element name="id" type="vdi:URLRedirectionId" />
+      </sequence>
+   </complexType>
+   <complexType name="URLRedirection_UpdateRequestType">
+      <sequence>
+         <element name="_this" type="vim25:ManagedObjectReference" />
+         <element name="id" type="vdi:URLRedirectionId" />
+         <element name="updates" type="vdi:MapEntry" maxOccurs="unbounded" />
+      </sequence>
+   </complexType>
+   <complexType name="URLRedirection_DeleteRequestType">
+      <sequence>
+         <element name="_this" type="vim25:ManagedObjectReference" />
+         <element name="id" type="vdi:URLRedirectionId" />
+      </sequence>
+   </complexType>
+   <complexType name="URLRedirection_ListRequestType">
+      <sequence>
+         <element name="_this" type="vim25:ManagedObjectReference" />
+      </sequence>
+   </complexType>
+   <complexType name="VirtualCenter_CreateRequestType">
+      <sequence>
+         <element name="_this" type="vim25:ManagedObjectReference" />
+         <element name="spec" type="vdi:VirtualCenterSpec" />
+      </sequence>
+   </complexType>
+   <complexType name="VirtualCenter_GetRequestType">
+      <sequence>
+         <element name="_this" type="vim25:ManagedObjectReference" />
+         <element name="id" type="vdi:VirtualCenterId" />
+      </sequence>
+   </complexType>
+   <complexType name="VirtualCenter_ListRequestType">
+      <sequence>
+         <element name="_this" type="vim25:ManagedObjectReference" />
+      </sequence>
+   </complexType>
+   <complexType name="VirtualCenter_UpdateRequestType">
+      <sequence>
+         <element name="_this" type="vim25:ManagedObjectReference" />
+         <element name="id" type="vdi:VirtualCenterId" />
+         <element name="updates" type="vdi:MapEntry" maxOccurs="unbounded" />
+      </sequence>
+   </complexType>
+   <complexType name="VirtualCenter_DeleteRequestType">
+      <sequence>
+         <element name="_this" type="vim25:ManagedObjectReference" />
+         <element name="id" type="vdi:VirtualCenterId" />
+      </sequence>
+   </complexType>
+   <complexType name="QueryService_GetCountRequestType">
+      <sequence>
+         <element name="_this" type="vim25:ManagedObjectReference" />
+         <element name="definition" type="vdi:QueryDefinition" />
+      </sequence>
+   </complexType>
+   <complexType name="QueryService_QueryRequestType">
+      <sequence>
+         <element name="_this" type="vim25:ManagedObjectReference" />
+         <element name="definition" type="vdi:QueryDefinition" />
+      </sequence>
+   </complexType>
+   <complexType name="QueryService_CreateRequestType">
+      <sequence>
+         <element name="_this" type="vim25:ManagedObjectReference" />
+         <element name="definition" type="vdi:QueryDefinition" />
+      </sequence>
+   </complexType>
+   <complexType name="QueryService_GetNextRequestType">
+      <sequence>
+         <element name="_this" type="vim25:ManagedObjectReference" />
+         <element name="id" type="vdi:QueryId" />
+      </sequence>
+   </complexType>
+   <complexType name="QueryService_DeleteRequestType">
+      <sequence>
+         <element name="_this" type="vim25:ManagedObjectReference" />
+         <element name="id" type="vdi:QueryId" />
+      </sequence>
+   </complexType>
+   <complexType name="QueryService_DeleteAllRequestType">
+      <sequence>
+         <element name="_this" type="vim25:ManagedObjectReference" />
+      </sequence>
+   </complexType>
+   <complexType name="Application_CreateRequestType">
+      <sequence>
+         <element name="_this" type="vim25:ManagedObjectReference" />
+         <element name="spec" type="vdi:ApplicationSpec" />
+      </sequence>
+   </complexType>
+   <complexType name="Application_GetRequestType">
+      <sequence>
+         <element name="_this" type="vim25:ManagedObjectReference" />
+         <element name="id" type="vdi:ApplicationId" />
+      </sequence>
+   </complexType>
+   <complexType name="Application_UpdateRequestType">
+      <sequence>
+         <element name="_this" type="vim25:ManagedObjectReference" />
+         <element name="id" type="vdi:ApplicationId" />
+         <element name="updates" type="vdi:MapEntry" maxOccurs="unbounded" />
+      </sequence>
+   </complexType>
+   <complexType name="Application_DeleteRequestType">
+      <sequence>
+         <element name="_this" type="vim25:ManagedObjectReference" />
+         <element name="id" type="vdi:ApplicationId" />
+      </sequence>
+   </complexType>
+   <complexType name="ApplicationIcon_GetRequestType">
+      <sequence>
+         <element name="_this" type="vim25:ManagedObjectReference" />
+         <element name="id" type="vdi:ApplicationIconId" />
+      </sequence>
+   </complexType>
+   <complexType name="ApplicationIcon_GetInfosRequestType">
+      <sequence>
+         <element name="_this" type="vim25:ManagedObjectReference" />
+         <element name="ids" type="vdi:ApplicationIconId" maxOccurs="unbounded" />
+      </sequence>
+   </complexType>
+   <complexType name="ApplicationIcon_GetByApplicationsRequestType">
+      <sequence>
+         <element name="_this" type="vim25:ManagedObjectReference" />
+         <element name="height" type="xsd:int" />
+         <element name="width" type="xsd:int" />
+         <element name="ids" type="vdi:ApplicationId" maxOccurs="unbounded" />
+      </sequence>
+   </complexType>
+   <complexType name="ApplicationIcon_CreateAndAssociateRequestType">
+      <sequence>
+         <element name="_this" type="vim25:ManagedObjectReference" />
+         <element name="spec" type="vdi:ApplicationIconSpec" />
+      </sequence>
+   </complexType>
+   <complexType name="ApplicationIcon_UpdateAssociationsRequestType">
+      <sequence>
+         <element name="_this" type="vim25:ManagedObjectReference" />
+         <element name="id" type="vdi:ApplicationIconId" />
+         <element name="applications" type="vdi:ApplicationId" maxOccurs="unbounded" />
+      </sequence>
+   </complexType>
+   <complexType name="ApplicationIcon_RemoveAssociationsRequestType">
+      <sequence>
+         <element name="_this" type="vim25:ManagedObjectReference" />
+         <element name="id" type="vdi:ApplicationIconId" />
+         <element name="applications" type="vdi:ApplicationId" maxOccurs="unbounded" />
+      </sequence>
+   </complexType>
+   <complexType name="Desktop_CreateRequestType">
+      <sequence>
+         <element name="_this" type="vim25:ManagedObjectReference" />
+         <element name="spec" type="vdi:DesktopSpec" />
+      </sequence>
+   </complexType>
+   <complexType name="Desktop_GetSummaryViewRequestType">
+      <sequence>
+         <element name="_this" type="vim25:ManagedObjectReference" />
+         <element name="id" type="vdi:DesktopId" />
+      </sequence>
+   </complexType>
+   <complexType name="Desktop_GetSummaryViewsRequestType">
+      <sequence>
+         <element name="_this" type="vim25:ManagedObjectReference" />
+         <element name="ids" type="vdi:DesktopId" maxOccurs="unbounded" />
+      </sequence>
+   </complexType>
+   <complexType name="Desktop_GetRequestType">
+      <sequence>
+         <element name="_this" type="vim25:ManagedObjectReference" />
+         <element name="id" type="vdi:DesktopId" />
+      </sequence>
+   </complexType>
+   <complexType name="Desktop_UpdateRequestType">
+      <sequence>
+         <element name="_this" type="vim25:ManagedObjectReference" />
+         <element name="id" type="vdi:DesktopId" />
+         <element name="updates" type="vdi:MapEntry" maxOccurs="unbounded" />
+      </sequence>
+   </complexType>
+   <complexType name="Desktop_DeleteRequestType">
+      <sequence>
+         <element name="_this" type="vim25:ManagedObjectReference" />
+         <element name="id" type="vdi:DesktopId" />
+         <element name="spec" type="vdi:DesktopDeleteSpec" minOccurs="0" />
+      </sequence>
+   </complexType>
+   <complexType name="Desktop_AddMachineToManualDesktopRequestType">
+      <sequence>
+         <element name="_this" type="vim25:ManagedObjectReference" />
+         <element name="id" type="vdi:DesktopId" />
+         <element name="machine" type="vdi:MachineId" />
+      </sequence>
+   </complexType>
+   <complexType name="Desktop_AddMachinesToManualDesktopRequestType">
+      <sequence>
+         <element name="_this" type="vim25:ManagedObjectReference" />
+         <element name="id" type="vdi:DesktopId" />
+         <element name="machines" type="vdi:MachineId" maxOccurs="unbounded" />
+      </sequence>
+   </complexType>
+   <complexType name="Desktop_RemoveMachineFromManualDesktopRequestType">
+      <sequence>
+         <element name="_this" type="vim25:ManagedObjectReference" />
+         <element name="id" type="vdi:DesktopId" />
+         <element name="machine" type="vdi:MachineId" />
+      </sequence>
+   </complexType>
+   <complexType name="Desktop_RemoveMachinesFromManualDesktopRequestType">
+      <sequence>
+         <element name="_this" type="vim25:ManagedObjectReference" />
+         <element name="id" type="vdi:DesktopId" />
+         <element name="machines" type="vdi:MachineId" maxOccurs="unbounded" />
+      </sequence>
+   </complexType>
+   <complexType name="Desktop_AddMachineToSpecifiedNamingDesktopRequestType">
+      <sequence>
+         <element name="_this" type="vim25:ManagedObjectReference" />
+         <element name="id" type="vdi:DesktopId" />
+         <element name="specifiedName" type="vdi:DesktopSpecifiedName" />
+      </sequence>
+   </complexType>
+   <complexType name="Desktop_AddMachinesToSpecifiedNamingDesktopRequestType">
+      <sequence>
+         <element name="_this" type="vim25:ManagedObjectReference" />
+         <element name="id" type="vdi:DesktopId" />
+         <element name="specifiedNames" type="vdi:DesktopSpecifiedName" maxOccurs="unbounded" />
+      </sequence>
+   </complexType>
+   <complexType name="Desktop_RefreshRequestType">
+      <sequence>
+         <element name="_this" type="vim25:ManagedObjectReference" />
+         <element name="id" type="vdi:DesktopId" />
+         <element name="spec" type="vdi:DesktopRefreshSpec" />
+      </sequence>
+   </complexType>
+   <complexType name="Desktop_RebalanceRequestType">
+      <sequence>
+         <element name="_this" type="vim25:ManagedObjectReference" />
+         <element name="id" type="vdi:DesktopId" />
+         <element name="spec" type="vdi:DesktopRebalanceSpec" />
+      </sequence>
+   </complexType>
+   <complexType name="Desktop_RecomposeRequestType">
+      <sequence>
+         <element name="_this" type="vim25:ManagedObjectReference" />
+         <element name="id" type="vdi:DesktopId" />
+         <element name="spec" type="vdi:DesktopRecomposeSpec" />
+      </sequence>
+   </complexType>
+   <complexType name="Desktop_SchedulePushImageRequestType">
+      <sequence>
+         <element name="_this" type="vim25:ManagedObjectReference" />
+         <element name="id" type="vdi:DesktopId" />
+         <element name="spec" type="vdi:DesktopPushImageSpec" />
+      </sequence>
+   </complexType>
+   <complexType name="Desktop_CancelScheduledPushImageRequestType">
+      <sequence>
+         <element name="_this" type="vim25:ManagedObjectReference" />
+         <element name="id" type="vdi:DesktopId" />
+      </sequence>
+   </complexType>
+   <complexType name="Farm_CreateRequestType">
+      <sequence>
+         <element name="_this" type="vim25:ManagedObjectReference" />
+         <element name="spec" type="vdi:FarmSpec" />
+      </sequence>
+   </complexType>
+   <complexType name="Farm_GetRequestType">
+      <sequence>
+         <element name="_this" type="vim25:ManagedObjectReference" />
+         <element name="id" type="vdi:FarmId" />
+      </sequence>
+   </complexType>
+   <complexType name="Farm_GetSummaryViewRequestType">
+      <sequence>
+         <element name="_this" type="vim25:ManagedObjectReference" />
+         <element name="id" type="vdi:FarmId" />
+      </sequence>
+   </complexType>
+   <complexType name="Farm_UpdateRequestType">
+      <sequence>
+         <element name="_this" type="vim25:ManagedObjectReference" />
+         <element name="id" type="vdi:FarmId" />
+         <element name="updates" type="vdi:MapEntry" maxOccurs="unbounded" />
+      </sequence>
+   </complexType>
+   <complexType name="Farm_AddRDSServersRequestType">
+      <sequence>
+         <element name="_this" type="vim25:ManagedObjectReference" />
+         <element name="id" type="vdi:FarmId" />
+         <element name="rdsServers" type="vdi:RDSServerId" maxOccurs="unbounded" />
+      </sequence>
+   </complexType>
+   <complexType name="Farm_RemoveRDSServersRequestType">
+      <sequence>
+         <element name="_this" type="vim25:ManagedObjectReference" />
+         <element name="id" type="vdi:FarmId" />
+         <element name="rdsServers" type="vdi:RDSServerId" maxOccurs="unbounded" />
+      </sequence>
+   </complexType>
+   <complexType name="Farm_DeleteRequestType">
+      <sequence>
+         <element name="_this" type="vim25:ManagedObjectReference" />
+         <element name="id" type="vdi:FarmId" />
+      </sequence>
+   </complexType>
+   <complexType name="Farm_DiscoverInstalledApplicationsRequestType">
+      <sequence>
+         <element name="_this" type="vim25:ManagedObjectReference" />
+         <element name="id" type="vdi:FarmId" />
+      </sequence>
+   </complexType>
+   <complexType name="Farm_ValidateInstalledApplicationsRequestType">
+      <sequence>
+         <element name="_this" type="vim25:ManagedObjectReference" />
+         <element name="id" type="vdi:FarmId" />
+         <element name="applicationExePaths" type="xsd:string" maxOccurs="unbounded" />
+      </sequence>
+   </complexType>
+   <complexType name="Farm_RecomposeRequestType">
+      <sequence>
+         <element name="_this" type="vim25:ManagedObjectReference" />
+         <element name="id" type="vdi:FarmId" />
+         <element name="spec" type="vdi:FarmRecomposeSpec" />
+      </sequence>
+   </complexType>
+   <complexType name="Farm_ScheduleMaintenanceRequestType">
+      <sequence>
+         <element name="_this" type="vim25:ManagedObjectReference" />
+         <element name="id" type="vdi:FarmId" />
+         <element name="spec" type="vdi:FarmMaintenanceSpec" />
+      </sequence>
+   </complexType>
+   <complexType name="Farm_CancelScheduleMaintenanceRequestType">
+      <sequence>
+         <element name="_this" type="vim25:ManagedObjectReference" />
+         <element name="id" type="vdi:FarmId" />
+         <element name="maintenanceMode" type="xsd:string" />
+      </sequence>
+   </complexType>
+   <complexType name="Machine_GetRequestType">
+      <sequence>
+         <element name="_this" type="vim25:ManagedObjectReference" />
+         <element name="id" type="vdi:MachineId" />
+      </sequence>
+   </complexType>
+   <complexType name="Machine_GetInfosRequestType">
+      <sequence>
+         <element name="_this" type="vim25:ManagedObjectReference" />
+         <element name="ids" type="vdi:MachineId" maxOccurs="unbounded" />
+      </sequence>
+   </complexType>
+   <complexType name="Machine_GetSummaryViewRequestType">
+      <sequence>
+         <element name="_this" type="vim25:ManagedObjectReference" />
+         <element name="id" type="vdi:MachineId" />
+      </sequence>
+   </complexType>
+   <complexType name="Machine_GetSummaryViewsRequestType">
+      <sequence>
+         <element name="_this" type="vim25:ManagedObjectReference" />
+         <element name="ids" type="vdi:MachineId" maxOccurs="unbounded" />
+      </sequence>
+   </complexType>
+   <complexType name="Machine_UpdateRequestType">
+      <sequence>
+         <element name="_this" type="vim25:ManagedObjectReference" />
+         <element name="id" type="vdi:MachineId" />
+         <element name="updates" type="vdi:MapEntry" maxOccurs="unbounded" />
+      </sequence>
+   </complexType>
+   <complexType name="Machine_ResetRequestType">
+      <sequence>
+         <element name="_this" type="vim25:ManagedObjectReference" />
+         <element name="id" type="vdi:MachineId" />
+      </sequence>
+   </complexType>
+   <complexType name="Machine_RestartRequestType">
+      <sequence>
+         <element name="_this" type="vim25:ManagedObjectReference" />
+         <element name="id" type="vdi:MachineId" />
+      </sequence>
+   </complexType>
+   <complexType name="Machine_DeleteRequestType">
+      <sequence>
+         <element name="_this" type="vim25:ManagedObjectReference" />
+         <element name="id" type="vdi:MachineId" />
+         <element name="spec" type="vdi:MachineDeleteSpec" minOccurs="0" />
+      </sequence>
+   </complexType>
+   <complexType name="Machine_ResetMachinesRequestType">
+      <sequence>
+         <element name="_this" type="vim25:ManagedObjectReference" />
+         <element name="ids" type="vdi:MachineId" maxOccurs="unbounded" />
+      </sequence>
+   </complexType>
+   <complexType name="Machine_RestartMachinesRequestType">
+      <sequence>
+         <element name="_this" type="vim25:ManagedObjectReference" />
+         <element name="ids" type="vdi:MachineId" maxOccurs="unbounded" />
+      </sequence>
+   </complexType>
+   <complexType name="Machine_DeleteMachinesRequestType">
+      <sequence>
+         <element name="_this" type="vim25:ManagedObjectReference" />
+         <element name="ids" type="vdi:MachineId" maxOccurs="unbounded" />
+         <element name="spec" type="vdi:MachineDeleteSpec" minOccurs="0" />
+      </sequence>
+   </complexType>
+   <complexType name="Machine_RegisterRequestType">
+      <sequence>
+         <element name="_this" type="vim25:ManagedObjectReference" />
+         <element name="spec" type="vdi:MachineRegisterSpec" />
+      </sequence>
+   </complexType>
+   <complexType name="Machine_RecoverRequestType">
+      <sequence>
+         <element name="_this" type="vim25:ManagedObjectReference" />
+         <element name="id" type="vdi:MachineId" />
+      </sequence>
+   </complexType>
+   <complexType name="Machine_RecoverMachinesRequestType">
+      <sequence>
+         <element name="_this" type="vim25:ManagedObjectReference" />
+         <element name="ids" type="vdi:MachineId" maxOccurs="unbounded" />
+      </sequence>
+   </complexType>
+   <complexType name="PersistentDisk_CreateRequestType">
+      <sequence>
+         <element name="_this" type="vim25:ManagedObjectReference" />
+         <element name="spec" type="vdi:PersistentDiskSpec" />
+      </sequence>
+   </complexType>
+   <complexType name="PersistentDisk_GetRequestType">
+      <sequence>
+         <element name="_this" type="vim25:ManagedObjectReference" />
+         <element name="id" type="vdi:PersistentDiskId" />
+      </sequence>
+   </complexType>
+   <complexType name="PersistentDisk_UpdateRequestType">
+      <sequence>
+         <element name="_this" type="vim25:ManagedObjectReference" />
+         <element name="id" type="vdi:PersistentDiskId" />
+         <element name="updates" type="vdi:MapEntry" maxOccurs="unbounded" />
+      </sequence>
+   </complexType>
+   <complexType name="PersistentDisk_DeleteRequestType">
+      <sequence>
+         <element name="_this" type="vim25:ManagedObjectReference" />
+         <element name="id" type="vdi:PersistentDiskId" />
+         <element name="spec" type="vdi:PersistentDiskDeleteSpec" minOccurs="0" />
+      </sequence>
+   </complexType>
+   <complexType name="PersistentDisk_RecreateMachineRequestType">
+      <sequence>
+         <element name="_this" type="vim25:ManagedObjectReference" />
+         <element name="id" type="vdi:PersistentDiskId" />
+         <element name="spec" type="vdi:PersistentDiskRecreateMachineSpec" minOccurs="0" />
+      </sequence>
+   </complexType>
+   <complexType name="PersistentDisk_AttachRequestType">
+      <sequence>
+         <element name="_this" type="vim25:ManagedObjectReference" />
+         <element name="id" type="vdi:PersistentDiskId" />
+         <element name="spec" type="vdi:PersistentDiskAttachSpec" />
+      </sequence>
+   </complexType>
+   <complexType name="PersistentDisk_DetachRequestType">
+      <sequence>
+         <element name="_this" type="vim25:ManagedObjectReference" />
+         <element name="id" type="vdi:PersistentDiskId" />
+         <element name="spec" type="vdi:PersistentDiskDetachSpec" />
+      </sequence>
+   </complexType>
+   <complexType name="PersistentDisk_ReplaceRequestType">
+      <sequence>
+         <element name="_this" type="vim25:ManagedObjectReference" />
+         <element name="id" type="vdi:PersistentDiskId" />
+         <element name="spec" type="vdi:PersistentDiskReplaceSpec" />
+      </sequence>
+   </complexType>
+   <complexType name="RDSServer_GetRequestType">
+      <sequence>
+         <element name="_this" type="vim25:ManagedObjectReference" />
+         <element name="id" type="vdi:RDSServerId" />
+      </sequence>
+   </complexType>
+   <complexType name="RDSServer_GetSummaryViewRequestType">
+      <sequence>
+         <element name="_this" type="vim25:ManagedObjectReference" />
+         <element name="id" type="vdi:RDSServerId" />
+      </sequence>
+   </complexType>
+   <complexType name="RDSServer_DeleteRequestType">
+      <sequence>
+         <element name="_this" type="vim25:ManagedObjectReference" />
+         <element name="id" type="vdi:RDSServerId" />
+      </sequence>
+   </complexType>
+   <complexType name="RDSServer_UpdateRequestType">
+      <sequence>
+         <element name="_this" type="vim25:ManagedObjectReference" />
+         <element name="id" type="vdi:RDSServerId" />
+         <element name="updates" type="vdi:MapEntry" maxOccurs="unbounded" />
+      </sequence>
+   </complexType>
+   <complexType name="RDSServer_RegisterRequestType">
+      <sequence>
+         <element name="_this" type="vim25:ManagedObjectReference" />
+         <element name="spec" type="vdi:RDSServerRegisterSpec" />
+      </sequence>
+   </complexType>
+   <complexType name="RDSServer_RecoverRequestType">
+      <sequence>
+         <element name="_this" type="vim25:ManagedObjectReference" />
+         <element name="id" type="vdi:RDSServerId" />
+      </sequence>
+   </complexType>
+   <complexType name="RDSServer_RecoverMachinesRequestType">
+      <sequence>
+         <element name="_this" type="vim25:ManagedObjectReference" />
+         <element name="ids" type="vdi:RDSServerId" maxOccurs="unbounded" />
+      </sequence>
+   </complexType>
+   <complexType name="RegisteredPhysicalMachine_GetRequestType">
+      <sequence>
+         <element name="_this" type="vim25:ManagedObjectReference" />
+         <element name="id" type="vdi:MachineId" />
+      </sequence>
+   </complexType>
+   <complexType name="RegisteredPhysicalMachine_DeleteRequestType">
+      <sequence>
+         <element name="_this" type="vim25:ManagedObjectReference" />
+         <element name="id" type="vdi:MachineId" />
+      </sequence>
+   </complexType>
+   <complexType name="RegisteredPhysicalMachine_RegisterRequestType">
+      <sequence>
+         <element name="_this" type="vim25:ManagedObjectReference" />
+         <element name="spec" type="vdi:RegisteredPhysicalMachineRegisterSpec" />
+      </sequence>
+   </complexType>
+   <complexType name="Task_GetRequestType">
+      <sequence>
+         <element name="_this" type="vim25:ManagedObjectReference" />
+         <element name="id" type="vdi:TaskId" />
+      </sequence>
+   </complexType>
+   <complexType name="Task_CancelRequestType">
+      <sequence>
+         <element name="_this" type="vim25:ManagedObjectReference" />
+         <element name="id" type="vdi:TaskId" />
+      </sequence>
+   </complexType>
+   <complexType name="ADUserOrGroup_GetRequestType">
+      <sequence>
+         <element name="_this" type="vim25:ManagedObjectReference" />
+         <element name="id" type="vdi:UserOrGroupId" />
+      </sequence>
+   </complexType>
+   <complexType name="ADUserOrGroup_GetSummaryViewRequestType">
+      <sequence>
+         <element name="_this" type="vim25:ManagedObjectReference" />
+         <element name="id" type="vdi:UserOrGroupId" />
+      </sequence>
+   </complexType>
+   <complexType name="ADUserOrGroup_GetViewRequestType">
+      <sequence>
+         <element name="_this" type="vim25:ManagedObjectReference" />
+         <element name="id" type="vdi:UserOrGroupId" />
+      </sequence>
+   </complexType>
+   <complexType name="ADUserOrGroup_GetInfosRequestType">
+      <sequence>
+         <element name="_this" type="vim25:ManagedObjectReference" />
+         <element name="ids" type="vdi:UserOrGroupId" maxOccurs="unbounded" />
+      </sequence>
+   </complexType>
+   <complexType name="ADUserOrGroup_GetSummaryViewsRequestType">
+      <sequence>
+         <element name="_this" type="vim25:ManagedObjectReference" />
+         <element name="ids" type="vdi:UserOrGroupId" maxOccurs="unbounded" />
+      </sequence>
+   </complexType>
+   <complexType name="ADUserOrGroup_GetViewsRequestType">
+      <sequence>
+         <element name="_this" type="vim25:ManagedObjectReference" />
+         <element name="ids" type="vdi:UserOrGroupId" maxOccurs="unbounded" />
+      </sequence>
+   </complexType>
+   <complexType name="ADUserOrGroup_RefreshRequestType">
+      <sequence>
+         <element name="_this" type="vim25:ManagedObjectReference" />
+         <element name="id" type="vdi:UserOrGroupId" />
+      </sequence>
+   </complexType>
+   <complexType name="AccessGroup_CreateRequestType">
+      <sequence>
+         <element name="_this" type="vim25:ManagedObjectReference" />
+         <element name="base" type="vdi:AccessGroupBase" />
+      </sequence>
+   </complexType>
+   <complexType name="AccessGroup_GetRequestType">
+      <sequence>
+         <element name="_this" type="vim25:ManagedObjectReference" />
+         <element name="id" type="vdi:AccessGroupId" />
+      </sequence>
+   </complexType>
+   <complexType name="AccessGroup_DeleteRequestType">
+      <sequence>
+         <element name="_this" type="vim25:ManagedObjectReference" />
+         <element name="entityId" type="vdi:AccessGroupId" />
+      </sequence>
+   </complexType>
+   <complexType name="AccessGroup_ListRequestType">
+      <sequence>
+         <element name="_this" type="vim25:ManagedObjectReference" />
+      </sequence>
+   </complexType>
+   <complexType name="AdminUserOrGroup_GetRequestType">
+      <sequence>
+         <element name="_this" type="vim25:ManagedObjectReference" />
+         <element name="id" type="vdi:UserOrGroupId" />
+      </sequence>
+   </complexType>
+   <complexType name="AdminUserOrGroup_GetViewRequestType">
+      <sequence>
+         <element name="_this" type="vim25:ManagedObjectReference" />
+         <element name="id" type="vdi:UserOrGroupId" />
+      </sequence>
+   </complexType>
+   <complexType name="AdminUserOrGroup_ListRequestType">
+      <sequence>
+         <element name="_this" type="vim25:ManagedObjectReference" />
+      </sequence>
+   </complexType>
+   <complexType name="AdminUserOrGroup_ListViewsRequestType">
+      <sequence>
+         <element name="_this" type="vim25:ManagedObjectReference" />
+      </sequence>
+   </complexType>
+   <complexType name="AnonymousLogonUser_CreateRequestType">
+      <sequence>
+         <element name="_this" type="vim25:ManagedObjectReference" />
+         <element name="userData" type="vdi:AnonymousLogonUserData" />
+      </sequence>
+   </complexType>
+   <complexType name="AnonymousLogonUser_GetRequestType">
+      <sequence>
+         <element name="_this" type="vim25:ManagedObjectReference" />
+         <element name="userId" type="vdi:UserOrGroupId" />
+      </sequence>
+   </complexType>
+   <complexType name="AnonymousLogonUser_DeleteRequestType">
+      <sequence>
+         <element name="_this" type="vim25:ManagedObjectReference" />
+         <element name="userId" type="vdi:UserOrGroupId" />
+      </sequence>
+   </complexType>
+   <complexType name="AnonymousLogonUser_ListRequestType">
+      <sequence>
+         <element name="_this" type="vim25:ManagedObjectReference" />
+      </sequence>
+   </complexType>
+   <complexType name="EntitledUserOrGroup_GetRequestType">
+      <sequence>
+         <element name="_this" type="vim25:ManagedObjectReference" />
+         <element name="id" type="vdi:UserOrGroupId" />
+      </sequence>
+   </complexType>
+   <complexType name="EntitledUserOrGroup_GetLocalSummaryViewRequestType">
+      <sequence>
+         <element name="_this" type="vim25:ManagedObjectReference" />
+         <element name="id" type="vdi:UserOrGroupId" />
+      </sequence>
+   </complexType>
+   <complexType name="EntitledUserOrGroup_GetGlobalSummaryViewRequestType">
+      <sequence>
+         <element name="_this" type="vim25:ManagedObjectReference" />
+         <element name="id" type="vdi:UserOrGroupId" />
+      </sequence>
+   </complexType>
+   <complexType name="EntitledUserOrGroup_GetInfosRequestType">
+      <sequence>
+         <element name="_this" type="vim25:ManagedObjectReference" />
+         <element name="ids" type="vdi:UserOrGroupId" maxOccurs="unbounded" />
+      </sequence>
+   </complexType>
+   <complexType name="EntitledUserOrGroup_GetLocalSummaryViewsRequestType">
+      <sequence>
+         <element name="_this" type="vim25:ManagedObjectReference" />
+         <element name="ids" type="vdi:UserOrGroupId" maxOccurs="unbounded" />
+      </sequence>
+   </complexType>
+   <complexType name="EntitledUserOrGroup_GetGlobalSummaryViewsRequestType">
+      <sequence>
+         <element name="_this" type="vim25:ManagedObjectReference" />
+         <element name="ids" type="vdi:UserOrGroupId" maxOccurs="unbounded" />
+      </sequence>
+   </complexType>
+   <complexType name="GlobalSessionQueryService_QueryWithSpecRequestType">
+      <sequence>
+         <element name="_this" type="vim25:ManagedObjectReference" />
+         <element name="querySpec" type="vdi:GlobalSessionQueryServiceQuerySpec" />
+      </sequence>
+   </complexType>
+   <complexType name="GlobalSessionQueryService_QueryByUserRequestType">
+      <sequence>
+         <element name="_this" type="vim25:ManagedObjectReference" />
+         <element name="user" type="vdi:UserOrGroupId" />
+         <element name="globalEntitlement" type="vdi:GlobalEntitlementId" minOccurs="0" />
+         <element name="sortBy" type="xsd:string" minOccurs="0" />
+         <element name="sortDescending" type="xsd:boolean" minOccurs="0" />
+         <element name="maxPageSize" type="xsd:int" minOccurs="0" />
+      </sequence>
+   </complexType>
+   <complexType name="GlobalSessionQueryService_QueryByPodRequestType">
+      <sequence>
+         <element name="_this" type="vim25:ManagedObjectReference" />
+         <element name="pod" type="vdi:PodId" />
+         <element name="globalEntitlement" type="vdi:GlobalEntitlementId" minOccurs="0" />
+         <element name="sortBy" type="xsd:string" minOccurs="0" />
+         <element name="sortDescending" type="xsd:boolean" minOccurs="0" />
+         <element name="maxPageSize" type="xsd:int" minOccurs="0" />
+      </sequence>
+   </complexType>
+   <complexType name="GlobalSessionQueryService_QueryByDesktopRequestType">
+      <sequence>
+         <element name="_this" type="vim25:ManagedObjectReference" />
+         <element name="desktop" type="vdi:DesktopId" />
+         <element name="globalEntitlement" type="vdi:GlobalEntitlementId" minOccurs="0" />
+         <element name="sortBy" type="xsd:string" minOccurs="0" />
+         <element name="sortDescending" type="xsd:boolean" minOccurs="0" />
+         <element name="maxPageSize" type="xsd:int" minOccurs="0" />
+      </sequence>
+   </complexType>
+   <complexType name="GlobalSessionQueryService_QueryByBrokeringPodRequestType">
+      <sequence>
+         <element name="_this" type="vim25:ManagedObjectReference" />
+         <element name="pod" type="vdi:PodId" />
+         <element name="globalEntitlement" type="vdi:GlobalEntitlementId" minOccurs="0" />
+         <element name="sortBy" type="xsd:string" minOccurs="0" />
+         <element name="sortDescending" type="xsd:boolean" minOccurs="0" />
+         <element name="maxPageSize" type="xsd:int" minOccurs="0" />
+      </sequence>
+   </complexType>
+   <complexType name="GlobalSessionQueryService_GetCountRequestType">
+      <sequence>
+         <element name="_this" type="vim25:ManagedObjectReference" />
+         <element name="user" type="vdi:UserOrGroupId" minOccurs="0" />
+         <element name="pod" type="vdi:PodId" minOccurs="0" />
+         <element name="brokeringPod" type="vdi:PodId" minOccurs="0" />
+         <element name="globalEntitlement" type="vdi:GlobalEntitlementId" minOccurs="0" />
+      </sequence>
+   </complexType>
+   <complexType name="GlobalSessionQueryService_GetCountWithSpecRequestType">
+      <sequence>
+         <element name="_this" type="vim25:ManagedObjectReference" />
+         <element name="countSpec" type="vdi:GlobalSessionQueryServiceCountSpec" />
+      </sequence>
+   </complexType>
+   <complexType name="GlobalSessionQueryService_GetNextRequestType">
+      <sequence>
+         <element name="_this" type="vim25:ManagedObjectReference" />
+         <element name="id" type="vdi:QueryId" />
+      </sequence>
+   </complexType>
+   <complexType name="GlobalSessionQueryService_DeleteRequestType">
+      <sequence>
+         <element name="_this" type="vim25:ManagedObjectReference" />
+         <element name="id" type="vdi:QueryId" />
+      </sequence>
+   </complexType>
+   <complexType name="Permission_CreateRequestType">
+      <sequence>
+         <element name="_this" type="vim25:ManagedObjectReference" />
+         <element name="base" type="vdi:PermissionBase" />
+      </sequence>
+   </complexType>
+   <complexType name="Permission_CreatePermissionsRequestType">
+      <sequence>
+         <element name="_this" type="vim25:ManagedObjectReference" />
+         <element name="bases" type="vdi:PermissionBase" maxOccurs="unbounded" />
+      </sequence>
+   </complexType>
+   <complexType name="Permission_GetRequestType">
+      <sequence>
+         <element name="_this" type="vim25:ManagedObjectReference" />
+         <element name="id" type="vdi:PermissionId" />
+      </sequence>
+   </complexType>
+   <complexType name="Permission_GetInfosRequestType">
+      <sequence>
+         <element name="_this" type="vim25:ManagedObjectReference" />
+         <element name="ids" type="vdi:PermissionId" maxOccurs="unbounded" />
+      </sequence>
+   </complexType>
+   <complexType name="Permission_DeleteRequestType">
+      <sequence>
+         <element name="_this" type="vim25:ManagedObjectReference" />
+         <element name="id" type="vdi:PermissionId" />
+      </sequence>
+   </complexType>
+   <complexType name="Permission_DeletePermissionsRequestType">
+      <sequence>
+         <element name="_this" type="vim25:ManagedObjectReference" />
+         <element name="ids" type="vdi:PermissionId" maxOccurs="unbounded" />
+      </sequence>
+   </complexType>
+   <complexType name="Permission_ListRequestType">
+      <sequence>
+         <element name="_this" type="vim25:ManagedObjectReference" />
+      </sequence>
+   </complexType>
+   <complexType name="Policies_UpdateRequestType">
+      <sequence>
+         <element name="_this" type="vim25:ManagedObjectReference" />
+         <element name="resource" type="vdi:EntityId" minOccurs="0" />
+         <element name="userOrGroup" type="vdi:UserOrGroupId" minOccurs="0" />
+         <element name="updates" type="vdi:MapEntry" maxOccurs="unbounded" />
+      </sequence>
+   </complexType>
+   <complexType name="Policies_SetRequestType">
+      <sequence>
+         <element name="_this" type="vim25:ManagedObjectReference" />
+         <element name="resource" type="vdi:EntityId" minOccurs="0" />
+         <element name="userOrGroup" type="vdi:UserOrGroupId" minOccurs="0" />
+         <element name="settings" type="vdi:PoliciesSettings" />
+      </sequence>
+   </complexType>
+   <complexType name="Policies_GetRequestType">
+      <sequence>
+         <element name="_this" type="vim25:ManagedObjectReference" />
+         <element name="resource" type="vdi:EntityId" minOccurs="0" />
+         <element name="userOrGroup" type="vdi:UserOrGroupId" minOccurs="0" />
+      </sequence>
+   </complexType>
+   <complexType name="Policies_ListRequestType">
+      <sequence>
+         <element name="_this" type="vim25:ManagedObjectReference" />
+         <element name="resource" type="vdi:EntityId" />
+      </sequence>
+   </complexType>
+   <complexType name="Policies_ClearRequestType">
+      <sequence>
+         <element name="_this" type="vim25:ManagedObjectReference" />
+         <element name="resource" type="vdi:EntityId" />
+         <element name="userOrGroup" type="vdi:UserOrGroupId" minOccurs="0" />
+      </sequence>
+   </complexType>
+   <complexType name="Role_CreateRequestType">
+      <sequence>
+         <element name="_this" type="vim25:ManagedObjectReference" />
+         <element name="base" type="vdi:RoleBase" />
+      </sequence>
+   </complexType>
+   <complexType name="Role_GetRequestType">
+      <sequence>
+         <element name="_this" type="vim25:ManagedObjectReference" />
+         <element name="id" type="vdi:RoleId" />
+      </sequence>
+   </complexType>
+   <complexType name="Role_UpdateRequestType">
+      <sequence>
+         <element name="_this" type="vim25:ManagedObjectReference" />
+         <element name="id" type="vdi:RoleId" />
+         <element name="updates" type="vdi:MapEntry" maxOccurs="unbounded" />
+      </sequence>
+   </complexType>
+   <complexType name="Role_DeleteRequestType">
+      <sequence>
+         <element name="_this" type="vim25:ManagedObjectReference" />
+         <element name="id" type="vdi:RoleId" />
+      </sequence>
+   </complexType>
+   <complexType name="Role_ListRequestType">
+      <sequence>
+         <element name="_this" type="vim25:ManagedObjectReference" />
+      </sequence>
+   </complexType>
+   <complexType name="Session_GetLocalSummaryViewRequestType">
+      <sequence>
+         <element name="_this" type="vim25:ManagedObjectReference" />
+         <element name="id" type="vdi:SessionId" />
+      </sequence>
+   </complexType>
+   <complexType name="Session_DisconnectRequestType">
+      <sequence>
+         <element name="_this" type="vim25:ManagedObjectReference" />
+         <element name="id" type="vdi:SessionId" />
+      </sequence>
+   </complexType>
+   <complexType name="Session_DisconnectSessionsRequestType">
+      <sequence>
+         <element name="_this" type="vim25:ManagedObjectReference" />
+         <element name="ids" type="vdi:SessionId" maxOccurs="unbounded" />
+      </sequence>
+   </complexType>
+   <complexType name="Session_LogoffRequestType">
+      <sequence>
+         <element name="_this" type="vim25:ManagedObjectReference" />
+         <element name="id" type="vdi:SessionId" />
+      </sequence>
+   </complexType>
+   <complexType name="Session_LogoffForcedRequestType">
+      <sequence>
+         <element name="_this" type="vim25:ManagedObjectReference" />
+         <element name="id" type="vdi:SessionId" />
+      </sequence>
+   </complexType>
+   <complexType name="Session_LogoffSessionsRequestType">
+      <sequence>
+         <element name="_this" type="vim25:ManagedObjectReference" />
+         <element name="ids" type="vdi:SessionId" maxOccurs="unbounded" />
+      </sequence>
+   </complexType>
+   <complexType name="Session_LogoffSessionsForcedRequestType">
+      <sequence>
+         <element name="_this" type="vim25:ManagedObjectReference" />
+         <element name="ids" type="vdi:SessionId" maxOccurs="unbounded" />
+      </sequence>
+   </complexType>
+   <complexType name="Session_SendMessageRequestType">
+      <sequence>
+         <element name="_this" type="vim25:ManagedObjectReference" />
+         <element name="id" type="vdi:SessionId" />
+         <element name="msgType" type="xsd:string" />
+         <element name="message" type="xsd:string" />
+      </sequence>
+   </complexType>
+   <complexType name="Session_SendMessagesRequestType">
+      <sequence>
+         <element name="_this" type="vim25:ManagedObjectReference" />
+         <element name="ids" type="vdi:SessionId" maxOccurs="unbounded" />
+         <element name="msgType" type="xsd:string" />
+         <element name="message" type="xsd:string" />
+      </sequence>
+   </complexType>
+   <complexType name="Session_ResetRequestType">
+      <sequence>
+         <element name="_this" type="vim25:ManagedObjectReference" />
+         <element name="id" type="vdi:SessionId" />
+      </sequence>
+   </complexType>
+   <complexType name="Session_ResetSessionsRequestType">
+      <sequence>
+         <element name="_this" type="vim25:ManagedObjectReference" />
+         <element name="ids" type="vdi:SessionId" maxOccurs="unbounded" />
+      </sequence>
+   </complexType>
+   <complexType name="UserEntitlement_CreateRequestType">
+      <sequence>
+         <element name="_this" type="vim25:ManagedObjectReference" />
+         <element name="base" type="vdi:UserEntitlementBase" />
+      </sequence>
+   </complexType>
+   <complexType name="UserEntitlement_CreateUserEntitlementsRequestType">
+      <sequence>
+         <element name="_this" type="vim25:ManagedObjectReference" />
+         <element name="bases" type="vdi:UserEntitlementBase" maxOccurs="unbounded" />
+      </sequence>
+   </complexType>
+   <complexType name="UserEntitlement_GetRequestType">
+      <sequence>
+         <element name="_this" type="vim25:ManagedObjectReference" />
+         <element name="id" type="vdi:UserEntitlementId" />
+      </sequence>
+   </complexType>
+   <complexType name="UserEntitlement_GetInfosRequestType">
+      <sequence>
+         <element name="_this" type="vim25:ManagedObjectReference" />
+         <element name="ids" type="vdi:UserEntitlementId" maxOccurs="unbounded" />
+      </sequence>
+   </complexType>
+   <complexType name="UserEntitlement_DeleteRequestType">
+      <sequence>
+         <element name="_this" type="vim25:ManagedObjectReference" />
+         <element name="id" type="vdi:UserEntitlementId" />
+      </sequence>
+   </complexType>
+   <complexType name="UserEntitlement_DeleteUserEntitlementsRequestType">
+      <sequence>
+         <element name="_this" type="vim25:ManagedObjectReference" />
+         <element name="ids" type="vdi:UserEntitlementId" maxOccurs="unbounded" />
+      </sequence>
+   </complexType>
+   <complexType name="ADContainer_ListByDomainRequestType">
+      <sequence>
+         <element name="_this" type="vim25:ManagedObjectReference" />
+         <element name="domain" type="vdi:ADDomainId" />
+      </sequence>
+   </complexType>
+   <complexType name="ADContainer_ListByViewComposerDomainAdministratorRequestType">
+      <sequence>
+         <element name="_this" type="vim25:ManagedObjectReference" />
+         <element name="domainAdministrator" type="vdi:ViewComposerDomainAdministratorId" />
+      </sequence>
+   </complexType>
+   <complexType name="ADDomain_ListRequestType">
+      <sequence>
+         <element name="_this" type="vim25:ManagedObjectReference" />
+      </sequence>
+   </complexType>
+   <complexType name="AdvancedSettings_GetRequestType">
+      <sequence>
+         <element name="_this" type="vim25:ManagedObjectReference" />
+         <element name="id" type="vdi:EntityId" minOccurs="0" />
+         <element name="keys" type="xsd:string" maxOccurs="unbounded" />
+      </sequence>
+   </complexType>
+   <complexType name="AdvancedSettings_SetRequestType">
+      <sequence>
+         <element name="_this" type="vim25:ManagedObjectReference" />
+         <element name="id" type="vdi:EntityId" minOccurs="0" />
+         <element name="values" type="vdi:MapEntry" maxOccurs="unbounded" />
+      </sequence>
+   </complexType>
+   <complexType name="AdvancedSettings_PerformRequestType">
+      <sequence>
+         <element name="_this" type="vim25:ManagedObjectReference" />
+         <element name="id" type="vdi:EntityId" minOccurs="0" />
+         <element name="operationName" type="xsd:string" />
+         <element name="parameters" type="vdi:MapEntry" minOccurs="0" maxOccurs="unbounded" />
+      </sequence>
+   </complexType>
+   <complexType name="Certificate_ValidateRequestType">
+      <sequence>
+         <element name="_this" type="vim25:ManagedObjectReference" />
+         <element name="spec" type="xsd:anyType" />
+      </sequence>
+   </complexType>
+   <complexType name="InstantCloneEngineDomainAdministrator_CreateRequestType">
+      <sequence>
+         <element name="_this" type="vim25:ManagedObjectReference" />
+         <element name="spec" type="vdi:InstantCloneEngineDomainAdministratorSpec" />
+      </sequence>
+   </complexType>
+   <complexType name="InstantCloneEngineDomainAdministrator_GetRequestType">
+      <sequence>
+         <element name="_this" type="vim25:ManagedObjectReference" />
+         <element name="id" type="vdi:InstantCloneEngineDomainAdministratorId" />
+      </sequence>
+   </complexType>
+   <complexType name="InstantCloneEngineDomainAdministrator_ListRequestType">
+      <sequence>
+         <element name="_this" type="vim25:ManagedObjectReference" />
+      </sequence>
+   </complexType>
+   <complexType name="InstantCloneEngineDomainAdministrator_UpdateRequestType">
+      <sequence>
+         <element name="_this" type="vim25:ManagedObjectReference" />
+         <element name="id" type="vdi:InstantCloneEngineDomainAdministratorId" />
+         <element name="updates" type="vdi:MapEntry" maxOccurs="unbounded" />
+      </sequence>
+   </complexType>
+   <complexType name="InstantCloneEngineDomainAdministrator_DeleteRequestType">
+      <sequence>
+         <element name="_this" type="vim25:ManagedObjectReference" />
+         <element name="id" type="vdi:InstantCloneEngineDomainAdministratorId" />
+      </sequence>
+   </complexType>
+   <complexType name="ViewComposerDomainAdministrator_CreateRequestType">
+      <sequence>
+         <element name="_this" type="vim25:ManagedObjectReference" />
+         <element name="spec" type="vdi:ViewComposerDomainAdministratorSpec" />
+      </sequence>
+   </complexType>
+   <complexType name="ViewComposerDomainAdministrator_GetRequestType">
+      <sequence>
+         <element name="_this" type="vim25:ManagedObjectReference" />
+         <element name="id" type="vdi:ViewComposerDomainAdministratorId" />
+      </sequence>
+   </complexType>
+   <complexType name="ViewComposerDomainAdministrator_ListRequestType">
+      <sequence>
+         <element name="_this" type="vim25:ManagedObjectReference" />
+         <element name="virtualCenter" type="vdi:VirtualCenterId" />
+      </sequence>
+   </complexType>
+   <complexType name="ViewComposerDomainAdministrator_UpdateRequestType">
+      <sequence>
+         <element name="_this" type="vim25:ManagedObjectReference" />
+         <element name="id" type="vdi:ViewComposerDomainAdministratorId" />
+         <element name="updates" type="vdi:MapEntry" maxOccurs="unbounded" />
+      </sequence>
+   </complexType>
+   <complexType name="ViewComposerDomainAdministrator_DeleteRequestType">
+      <sequence>
+         <element name="_this" type="vim25:ManagedObjectReference" />
+         <element name="id" type="vdi:ViewComposerDomainAdministratorId" />
+      </sequence>
+   </complexType>
+   <complexType name="BaseImageSnapshot_ListRequestType">
+      <sequence>
+         <element name="_this" type="vim25:ManagedObjectReference" />
+         <element name="baseImageVm" type="vdi:BaseImageVmId" />
+      </sequence>
+   </complexType>
+   <complexType name="BaseImageVm_ListRequestType">
+      <sequence>
+         <element name="_this" type="vim25:ManagedObjectReference" />
+         <element name="virtualCenter" type="vdi:VirtualCenterId" />
+      </sequence>
+   </complexType>
+   <complexType name="BaseImageVm_ListByDatacenterRequestType">
+      <sequence>
+         <element name="_this" type="vim25:ManagedObjectReference" />
+         <element name="datacenter" type="vdi:DatacenterId" />
+      </sequence>
+   </complexType>
+   <complexType name="CustomizationSpec_ListRequestType">
+      <sequence>
+         <element name="_this" type="vim25:ManagedObjectReference" />
+         <element name="virtualCenter" type="vdi:VirtualCenterId" />
+      </sequence>
+   </complexType>
+   <complexType name="Datastore_ListDatastoresByHostOrClusterRequestType">
+      <sequence>
+         <element name="_this" type="vim25:ManagedObjectReference" />
+         <element name="hostOrCluster" type="vdi:HostOrClusterId" />
+      </sequence>
+   </complexType>
+   <complexType name="DatastorePath_ListRequestType">
+      <sequence>
+         <element name="_this" type="vim25:ManagedObjectReference" />
+         <element name="virtualCenter" type="vdi:VirtualCenterId" />
+         <element name="datastore" type="vdi:DatastoreId" />
+      </sequence>
+   </complexType>
+   <complexType name="HostOrCluster_GetHostOrClusterTreeRequestType">
+      <sequence>
+         <element name="_this" type="vim25:ManagedObjectReference" />
+         <element name="datacenter" type="vdi:DatacenterId" />
+      </sequence>
+   </complexType>
+   <complexType name="NetworkInterfaceCard_ListByTemplateRequestType">
+      <sequence>
+         <element name="_this" type="vim25:ManagedObjectReference" />
+         <element name="template" type="vdi:VmTemplateId" />
+      </sequence>
+   </complexType>
+   <complexType name="NetworkInterfaceCard_ListBySnapshotRequestType">
+      <sequence>
+         <element name="_this" type="vim25:ManagedObjectReference" />
+         <element name="baseImageSnapshot" type="vdi:BaseImageSnapshotId" />
+      </sequence>
+   </complexType>
+   <complexType name="NetworkLabel_ListByHostOrClusterRequestType">
+      <sequence>
+         <element name="_this" type="vim25:ManagedObjectReference" />
+         <element name="cluster" type="vdi:HostOrClusterId" />
+      </sequence>
+   </complexType>
+   <complexType name="ResourcePool_GetResourcePoolTreeRequestType">
+      <sequence>
+         <element name="_this" type="vim25:ManagedObjectReference" />
+         <element name="hostOrCluster" type="vdi:HostOrClusterId" />
+      </sequence>
+   </complexType>
+   <complexType name="SpaceReclamation_IsSupportedByVirtualCenterRequestType">
+      <sequence>
+         <element name="_this" type="vim25:ManagedObjectReference" />
+         <element name="virtualCenter" type="vdi:VirtualCenterId" />
+      </sequence>
+   </complexType>
+   <complexType name="SpaceReclamation_IsSupportedByServerDefinitionRequestType">
+      <sequence>
+         <element name="_this" type="vim25:ManagedObjectReference" />
+         <element name="serverDefinition" type="vdi:ServerDefinition" />
+      </sequence>
+   </complexType>
+   <complexType name="StorageAcceleratorHost_ListByVirtualCenterRequestType">
+      <sequence>
+         <element name="_this" type="vim25:ManagedObjectReference" />
+         <element name="virtualCenter" type="vdi:VirtualCenterId" />
+      </sequence>
+   </complexType>
+   <complexType name="StorageAcceleratorHost_ListByServerDefinitionRequestType">
+      <sequence>
+         <element name="_this" type="vim25:ManagedObjectReference" />
+         <element name="serverDefinition" type="vdi:ServerDefinition" />
+      </sequence>
+   </complexType>
+   <complexType name="VirtualDisk_ListRequestType">
+      <sequence>
+         <element name="_this" type="vim25:ManagedObjectReference" />
+         <element name="virtualCenter" type="vdi:VirtualCenterId" />
+         <element name="datastore" type="vdi:DatastoreId" minOccurs="0" />
+      </sequence>
+   </complexType>
+   <complexType name="VirtualMachine_ListRequestType">
+      <sequence>
+         <element name="_this" type="vim25:ManagedObjectReference" />
+         <element name="virtualCenter" type="vdi:VirtualCenterId" />
+      </sequence>
+   </complexType>
+   <complexType name="VirtualSAN_IsSupportedByVirtualCenterRequestType">
+      <sequence>
+         <element name="_this" type="vim25:ManagedObjectReference" />
+         <element name="virtualCenter" type="vdi:VirtualCenterId" />
+      </sequence>
+   </complexType>
+   <complexType name="VirtualSAN_IsSupportedByHostOrClusterRequestType">
+      <sequence>
+         <element name="_this" type="vim25:ManagedObjectReference" />
+         <element name="hostOrCluster" type="vdi:HostOrClusterId" />
+      </sequence>
+   </complexType>
+   <complexType name="VmFolder_GetVmFolderTreeRequestType">
+      <sequence>
+         <element name="_this" type="vim25:ManagedObjectReference" />
+         <element name="datacenter" type="vdi:DatacenterId" />
+      </sequence>
+   </complexType>
+   <complexType name="VmTemplate_ListRequestType">
+      <sequence>
+         <element name="_this" type="vim25:ManagedObjectReference" />
+         <element name="virtualCenter" type="vdi:VirtualCenterId" />
+      </sequence>
+   </complexType>
+   <complexType name="VmTemplate_ListByDatacenterRequestType">
+      <sequence>
+         <element name="_this" type="vim25:ManagedObjectReference" />
+         <element name="datacenter" type="vdi:DatacenterId" />
+      </sequence>
+   </complexType>
+</schema>

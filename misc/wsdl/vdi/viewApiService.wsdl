@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--
+   Copyright 2005-2016 VMware, Inc.  All rights reserved.
+-->
+<definitions targetNamespace="urn:vdiService"
+   xmlns="http://schemas.xmlsoap.org/wsdl/"
+   xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+   xmlns:interface="urn:vdi"
+>
+   <import location="viewApi.wsdl" namespace="urn:vdi" />
+   <service name="viewApiService">
+      <port binding="interface:viewApiBinding" name="viewApiPort">
+         <soap:address location="https://localhost/view-vlsi/sdk" />
+      </port>
+   </service>
+</definitions>

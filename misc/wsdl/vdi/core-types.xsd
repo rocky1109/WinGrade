@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--
+   Copyright 2005-2016 VMware, Inc.  All rights reserved.
+-->
+<schema
+   targetNamespace="urn:vim25"
+   xmlns="http://www.w3.org/2001/XMLSchema"
+   xmlns:vim25="urn:vim25"
+   xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+   elementFormDefault="qualified"
+>
+   <complexType name="DynamicData">
+      <sequence>
+         <element name="dynamicType" type="xsd:string" minOccurs="0" />
+         <element name="dynamicProperty" type="vim25:DynamicProperty" minOccurs="0" maxOccurs="unbounded" />
+      </sequence>
+   </complexType>
+   <complexType name="DynamicProperty">
+      <sequence>
+         <element name="name" type="xsd:string" />
+         <element name="val" type="xsd:anyType" />
+      </sequence>
+   </complexType>
+   <complexType name="ArrayOfDynamicProperty">
+      <sequence>
+         <element name="DynamicProperty" type="vim25:DynamicProperty" minOccurs="0" maxOccurs="unbounded" />
+      </sequence>
+   </complexType>
+   <complexType name="LocalizedMethodFault">
+      <complexContent>
+         <extension base="vim25:DynamicData">
+            <sequence>
+               <element name="fault" type="vim25:MethodFault" />
+               <element name="localizedMessage" type="xsd:string" minOccurs="0" />
+            </sequence>
+         </extension>
+      </complexContent>
+   </complexType>
+   <complexType name="MethodFault">
+      <sequence>
+         <element name="dynamicType" type="xsd:string" minOccurs="0" />
+         <element name="dynamicProperty" type="vim25:DynamicProperty" minOccurs="0" maxOccurs="unbounded" />
+      </sequence>
+   </complexType>
+   <complexType name="RuntimeFault">
+      <complexContent>
+         <extension base="vim25:MethodFault">
+            <sequence>
+            </sequence>
+         </extension>
+      </complexContent>
+   </complexType>
+   <complexType name="SecurityError">
+      <complexContent>
+         <extension base="vim25:RuntimeFault">
+            <sequence>
+            </sequence>
+         </extension>
+      </complexContent>
+   </complexType>
+   <complexType name="ManagedObjectReference">
+      <simpleContent>
+         <extension base="xsd:string">
+            <attribute name="type" type="xsd:string"/>
+         </extension>
+      </simpleContent>
+   </complexType>
+   <complexType name="ArrayOfString">
+      <sequence>
+         <element name="string" type="xsd:string" minOccurs="0" maxOccurs="unbounded" />
+      </sequence>
+   </complexType>
+   <complexType name="ArrayOfAnyType">
+      <sequence>
+         <element name="anyType" type="xsd:anyType" minOccurs="0" maxOccurs="unbounded" />
+      </sequence>
+   </complexType>
+   <complexType name="ArrayOfInt">
+      <sequence>
+         <element name="int" type="xsd:int" minOccurs="0" maxOccurs="unbounded" />
+      </sequence>
+   </complexType>
+</schema>
